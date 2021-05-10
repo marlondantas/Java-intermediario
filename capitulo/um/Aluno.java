@@ -1,12 +1,14 @@
 package um;
 
-public class Aluno {
+import tres.*;
+
+public class Aluno extends Pessoa {
     
     private int matricula;
     private String turno = "";
     private int semestre = 1;
     private int faltas = 0;
-    private String nome;
+    //private String nome;
 
     public Aluno(){
         System.out.println("Construido a classe aluno...");
@@ -21,10 +23,10 @@ public class Aluno {
     }
 
     public Aluno(String nomeAluno, int numeroMatricula){
-        this.nome = nomeAluno;
+        this.setNome(nomeAluno);
         this.matricula = numeroMatricula;
 
-        System.out.println("Novo aluno - Nome: " + this.nome + " - matricula: " + this.matricula);
+        System.out.println("Novo aluno - Nome: " + this.getNome() + " - matricula: " + this.matricula);
     }
 
     /* metodos gets & sets */

@@ -1,5 +1,6 @@
 package um;
 
+import tres.*;
 import dois.*;
 import um.*;
 
@@ -19,7 +20,6 @@ public class Sistema {
         double saida = aluno.calcularMediaProvas(7.5, 8.5, 8.0);
         
         System.out.println("Saida: "+saida);
-        
 
         System.out.println("##############################################################");
         System.out.println("Classe aluno: set && get");
@@ -68,8 +68,32 @@ public class Sistema {
         frog.som();
 
         System.out.println("##############################################################");
+        System.out.println("Classes Abstract:");
 
+        Aluno alunoAbstrato = new Aluno("Abstract",2214);
+        System.out.println("Aluno nome: " + alunoAbstrato.getNome() + " aluno matricula: "+ alunoAbstrato.getMatricula());
 
+        Professor professorAbstrato = new Professor();
+        professorAbstrato.setNome("NOME");
+        professorAbstrato.setUsuario("usuario");
+        System.out.println("Professor nome: " + professorAbstrato.getNome() + " Professor usuario: "+ professorAbstrato.getUsuario());
 
+        Servente serventeAbstrato = new Servente();
+        serventeAbstrato.setNome("serventeAbstrato");
+        serventeAbstrato.setTurno("Manha");
+        System.out.println("Servente nome: " + serventeAbstrato.getNome() + " servente turno: "+ serventeAbstrato.getTurno());
+
+        System.out.println("##############################################################");
+        System.out.println("Classes FINAL:");
+
+        Quadrado quadrado = new Quadrado(10);
+        System.out.println("Quadrado: area -> "+quadrado.area() + " e perimetro: "+quadrado.perimetro());
+
+        Circulo circulo = new Circulo(10);
+        System.out.println("Circulo: area -> "+circulo.area() + " e perimetro: "+circulo.perimetro());
+
+        Triangulo triangulo = new Triangulo(10,5);
+        System.out.println("Triangulo: area -> "+triangulo.area() + " e perimetro: "+triangulo.perimetro());
+        System.out.println("##############################################################");
     }
 }
