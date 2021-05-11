@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "capitulo"
+        "capitulo",
+        "ProjetoFinal"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
