@@ -5,14 +5,16 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import Controller.CargoDao;
+import Model.Cargo;
 
 public class CargoView{
     
     public static JPanel jPanel;
     public static JFrame jFrame;
-    public static CargoDao cargoDao;
+    
 
     public static JFrame criarComponetes(Statement instrucaoSQL){
         
@@ -41,6 +43,11 @@ public class CargoView{
         
         jLabelDescricao.setLabelFor(jTextFieldDescricao);
 
+        //JTextField 
+        JTextField jTextFieldID = new JTextField(30);
+        jTextFieldID.setBounds(150, 10, 50, 50);
+
+
         JButton jButtonSalvar = new JButton("Salvar");
         jButtonSalvar.setSize(460, 50);
         jButtonSalvar.setLocation(10, 150);
@@ -58,20 +65,73 @@ public class CargoView{
         jPanel.add(jLabelDescricao);
         jPanel.add(jTextFieldDescricao);
         jPanel.add(jButtonSalvar);
+        jPanel.add(jTextFieldID);
 
         jFrame.setContentPane(jPanel);
 
         return jFrame;
     }
 
+    public static void testComponetes(){
+        
+        System.out.println("testComponetes");
+        testarCargo("null");
+        
+
+    }
+
+    private static void testarCargo(String dsCargo){
+        System.out.println("SalvarCargo: " + dsCargo);
+        try {
+            Cargo cargo = CargoDao.criarCargo(dsCargo);
+
+            System.out.println(cargo.toString());
+
+            cargo = CargoDao.buscarPorID(cargo.getIdCargo());
+
+            cargo.setDsCargo("dsCargo");
+            cargo = CargoDao.editarCargo(cargo);
+
+            System.out.println(cargo.toString());
+
+            //CargoDao.excluirCargo(cargo.getIdCargo());
+
+            ArrayList<Cargo> todosCargos = CargoDao.buscarTodos();
+
+            for (Cargo cargoFor: todosCargos) {
+                System.out.println(cargoFor.toString());
+            }
+
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+
+    }
+
     private static void SalvarCargo(String dsCargo){
         System.out.println("SalvarCargo: " + dsCargo);
-
         try {
-            cargoDao.buscarTodos();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Cargo cargo = CargoDao.criarCargo(dsCargo);
+
+            System.out.println(cargo.toString());
+
+            cargo = CargoDao.buscarPorID(cargo.getIdCargo());
+
+            cargo.setDsCargo("dsCargo");
+            cargo = CargoDao.editarCargo(cargo);
+
+            System.out.println(cargo.toString());
+
+            CargoDao.excluirCargo(cargo.getIdCargo());
+
+            ArrayList<Cargo> todosCargos = CargoDao.buscarTodos();
+
+            for (Cargo cargoFor: todosCargos) {
+                System.out.println(cargoFor.toString());
+            }
+
+        } catch (Exception e) {
+            //TODO: handle exception
         }
 
     }

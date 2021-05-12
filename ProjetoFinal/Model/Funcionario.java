@@ -2,8 +2,9 @@ package Model;
 
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-
+import Controller.CargoDao;
 
 public class Funcionario {
     
@@ -16,13 +17,33 @@ public class Funcionario {
 
     private Cargo cargo;
 
+    @Override
+    public String toString() {
+        return "{" +
+            " idFuncionario='" + getIdFuncionario() + "'" +
+            ", nomaFuncionario='" + getNomaFuncionario() + "'" +
+            ", sobrenomeFuncionario='" + getSobrenomeFuncionario() + "'" +
+            ", dataNascimento='" + getDataNascimento() + "'" +
+            ", dsEmail='" + getDsEmail() + "'" +
+            ", vlSalario='" + getVlSalario() + "'" +
+            ", cargo='" + getCargo().getDsCargo() + "'" +
+            "}";
+    }
 
-    Funcionario(){
+
+    public Funcionario(){
         System.out.println("Novo funcionario");
     }
 
-    Funcionario(ResultSet dados){
+    public Funcionario(ResultSet dados) throws SQLException{
         //Load dados
+        this.setIdFuncionario(dados.getInt("id_funcionario"));
+        this.setNomaFuncionario(dados.getString("nm_funcionario"));
+        this.setSobrenomeFuncionario(dados.getString("nm_sobrenome"));
+        this.setDataNascimento(dados.getDate("dt_nascimento"));
+        this.setVlSalario(dados.getDouble("vl_salario"));
+
+        this.setCargo(CargoDao.buscarPorID(dados.getInt("id_cargo")));
 
         System.out.println("Funcionario carregado");
     }

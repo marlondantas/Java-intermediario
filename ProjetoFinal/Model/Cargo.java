@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class Cargo {
@@ -16,9 +17,20 @@ public class Cargo {
         System.out.println("Buscar cargo por id!");
     }
 
-    public Cargo(ResultSet dados){
+    public Cargo(ResultSet dados) throws SQLException{
         
-        System.out.println("Funcionario carregado");
+        this.setDsCargo(dados.getString("ds_carga"));
+        this.setIdCargo(dados.getInt("id_cargo"));
+
+        System.out.println("dados carregado");
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " idCargo='" + getIdCargo() + "'" +
+            ", dsCargo='" + getDsCargo() + "'" +
+            "}";
     }
 
     public int getIdCargo() {
