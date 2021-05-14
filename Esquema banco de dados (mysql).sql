@@ -39,7 +39,8 @@ create table tbod_funcionario (
     CONSTRAINT fk_id_cargo FOREIGN KEY (id_cargo) REFERENCES tbod_cargo (id_cargo)
 );
 
-select * from tbod_funcionario;
+select * from cursoJava.tbod_funcionario;
+select * from cursoJava.tbod_cargo;
 
 
 

@@ -19,7 +19,7 @@ public class Conn {
  
         String status = "Não conectou...";
 
-        instrucaoSQL = null;
+        //instrucaoSQL = null;
 
         try {
             String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATA_BASE;

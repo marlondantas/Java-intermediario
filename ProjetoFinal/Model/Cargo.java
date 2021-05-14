@@ -27,10 +27,11 @@ public class Cargo {
 
     @Override
     public String toString() {
-        return "{" +
-            " idCargo='" + getIdCargo() + "'" +
-            ", dsCargo='" + getDsCargo() + "'" +
-            "}";
+        // return "{" +
+        //     " idCargo='" + getIdCargo() + "'" +
+        //     ", dsCargo='" + getDsCargo() + "'" +
+        //     "}";
+        return getDsCargo();
     }
 
     public int getIdCargo() {

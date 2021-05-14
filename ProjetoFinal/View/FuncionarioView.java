@@ -9,14 +9,41 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Model.Funcionario;
-import Controller.CargoDao;
-import Controller.Conn;
 import Controller.FuncionarioDao;
 
 public class FuncionarioView {
 
-    public static JPanel jPanel;
-    public static JFrame jFrame;
+    public static JPanel getFuncionarioView(){
+        JPanel jPanelFuncionarioView = new JPanel();
+        jPanelFuncionarioView.setLayout(null);
+
+        JLabel jLabelTitulo = new JLabel("Cadastro de funcionario", JLabel.CENTER);
+        JLabel jLabelNome = new JLabel("Nome: ", JLabel.LEFT);
+        JTextField jTextFieldNome  = new JTextField();
+        JLabel jLabelSobrenome = new JLabel("Sobrenome: ",JLabel.LEFT);
+        JTextField jTextFieldSobrenome = new JTextField();
+
+        JFormattedTextField fieldFormattedTextFieldDataNascimento = new JFormattedTextField();
+
+        JLabel jLabelEmail = new JLabel("E-mail: ", JLabel.LEFT);
+        JTextField jTextFieldEmail  = new JTextField();
+        JLabel jLabelCargo = new JLabel("Cargo: ",JLabel.LEFT);
+        JComboBox jComboBoxCargo = new JComboBox();
+
+        JLabel jLabelSalario = new JLabel("Salario: ", JLabel.LEFT);
+
+        JFormattedTextField formattedTextFieldSalario = new  JFormattedTextField();
+
+        JButton jButtonGravar = new JButton("Adicionar");
+
+
+        return jPanelFuncionarioView;
+
+    }
+
+    private static void criarComponetes(){}
+    private static void criarEventos(){}
+
 
     public static void testarComponentes(){
         try {
