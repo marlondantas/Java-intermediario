@@ -1,4 +1,4 @@
-package View;
+package View.Cargo;
 
 import javax.swing.*;
 import java.awt.*;

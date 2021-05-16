@@ -1,4 +1,4 @@
-package View;
+package View.Cargo;
 
 import java.awt.Font;
 import javax.swing.*;
