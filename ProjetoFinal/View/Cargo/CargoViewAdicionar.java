@@ -23,7 +23,7 @@ public class CargoViewAdicionar{
 
         criarComponetes(jPanelCargoView, jLabelTitulo, jLabelCargo, jTextFieldCargo, jButtonGravar);
         
-        System.out.println("Componentes criados");
+        //System.out.println("Componentes criados");
 
         criarEventos(jPanelCargoView, jLabelTitulo, jLabelCargo, jTextFieldCargo, jButtonGravar);
 
@@ -41,7 +41,7 @@ public class CargoViewAdicionar{
         jButtonGravar.setBounds(250, 380, 200, 40);
         
         //jTextFieldCargo
-        jTextFieldCargo.setText("MEU TEXTO TESTE");
+        //jTextFieldCargo.setText("MEU TEXTO TESTE");
 
         jPanelCargoView.add(jLabelTitulo);
         jPanelCargoView.add(jLabelCargo);

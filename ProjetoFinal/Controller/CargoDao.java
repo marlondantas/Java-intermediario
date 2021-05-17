@@ -41,7 +41,7 @@ public class CargoDao {
         String query = "insert into tbod_cargo(ds_carga) values ('"+dsCargo+"')";
        
         int resultadoSQL = Conn.insertQueryReturnInt(query, Conn.getStatement());
-        System.out.println("resultadoSQL: "+ resultadoSQL);
+        //System.out.println("resultadoSQL: "+ resultadoSQL);
         
         Cargo cargo = CargoDao.buscarPorID(resultadoSQL);
 
@@ -49,7 +49,7 @@ public class CargoDao {
     }
 
     public static Cargo editarCargo(Cargo cargo) throws SQLException{
-        System.out.println("update NO BANCO DE DADOS (dsCargo)");
+        //System.out.println("update NO BANCO DE DADOS (dsCargo)");
         
         String query = "update tbod_cargo set ds_carga = '"+cargo.getDsCargo()+"' where id_cargo = '"+cargo.getIdCargo()+"' ";
         
@@ -63,7 +63,7 @@ public class CargoDao {
     }
 
     public static boolean excluirCargo(int idCargo) throws SQLException{
-        System.out.println("delete NO BANCO DE DADOS (dsCargo)");
+        //System.out.println("delete NO BANCO DE DADOS (dsCargo)");
         String query = "delete from tbod_cargo where id_cargo = '"+idCargo+"' ";
 
         boolean resultadoSQL = Conn.deleteQuery(query, Conn.getStatement());

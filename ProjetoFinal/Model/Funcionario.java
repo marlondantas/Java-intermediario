@@ -19,7 +19,7 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "{" +
+        /*return "{" +
             " idFuncionario='" + getIdFuncionario() + "'" +
             ", nomaFuncionario='" + getNomaFuncionario() + "'" +
             ", sobrenomeFuncionario='" + getSobrenomeFuncionario() + "'" +
@@ -27,7 +27,9 @@ public class Funcionario {
             ", dsEmail='" + getDsEmail() + "'" +
             ", vlSalario='" + getVlSalario() + "'" +
             ", cargo='" + getCargo().getDsCargo() + "'" +
-            "}";
+            "}";*/
+
+        return getIdFuncionario() + " - " + getNomaFuncionario() + " " + getSobrenomeFuncionario();
     }
 
 
@@ -45,7 +47,7 @@ public class Funcionario {
 
         this.setCargo(CargoDao.buscarPorID(dados.getInt("id_cargo")));
 
-        System.out.println("Funcionario carregado");
+        //System.out.println("Funcionario carregado");
     }
 
     public int getIdFuncionario() {

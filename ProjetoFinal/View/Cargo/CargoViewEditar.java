@@ -7,9 +7,12 @@ import Model.Cargo;
 
 public class CargoViewEditar {
     
-    public Cargo cargoEscolhi;
+    private static Cargo cargoAtual;
 
-    public static JPanel getCargoViewEditar(){
+    public static JPanel getCargoViewEditar(Cargo cargoAtual){
+
+        CargoViewEditar.cargoAtual = cargoAtual;
+
         JPanel jPanelCargoViewEditar = new JPanel();
         jPanelCargoViewEditar.setLayout(null);
 
@@ -20,7 +23,8 @@ public class CargoViewEditar {
 
         criarComponetes(jPanelCargoViewEditar, jLabelTitulo, jLabelCargo, jTextFieldDescricao, jButtonSalvar);
         criarEventos(jPanelCargoViewEditar,jLabelTitulo, jLabelCargo, jTextFieldDescricao, jButtonSalvar);
-
+        carregarDados(jPanelCargoViewEditar, jLabelTitulo, jLabelCargo, jTextFieldDescricao, jButtonSalvar, cargoAtual);
+        
         return jPanelCargoViewEditar;
     }
 
@@ -43,4 +47,11 @@ public class CargoViewEditar {
     private static void criarEventos(JPanel jPanelCargoViewEditar, JLabel jLabelTitulo, JLabel jLabelCargo, JTextField  jTextFieldDescricao, JButton jButtonSalvar){
 
     }
+
+    private static void carregarDados(JPanel jPanelCargoViewEditar, JLabel jLabelTitulo, JLabel jLabelCargo, JTextField  jTextFieldDescricao, JButton jButtonSalvar,Cargo cargoAtual){
+
+        jTextFieldDescricao.setText(cargoAtual.getDsCargo());
+
+    }
+
 }

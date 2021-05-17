@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 import Controller.CargoDao;
 import Model.Cargo;
+import View.SistemaView;
+import um.Sistema;
 
 public class CargoViewConsultar {
     
@@ -55,13 +57,7 @@ public class CargoViewConsultar {
         jButtonEditar.setBounds(560,360, 130, 40);
         jButtonExcluir.setBounds(560, 400, 130, 40);
         
-        try {
-            for (Cargo cargoFor: CargoDao.buscarTodos()) {
-                defaultListModelCargos.addElement(cargoFor);
-            }
-        } catch (Exception e) {
-            System.out.println("ERRO NA CONSULTA DOS CARGOS");
-        }
+        atualizarLista(defaultListModelCargos);
         
         jPanelCargoViewEditar.add(jLabelTitulo);
         jPanelCargoViewEditar.add(jLabelCargo);
@@ -77,21 +73,32 @@ public class CargoViewConsultar {
         jButtonPesquisar.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                //pesquisar por like
             }
         });
 
         jButtonEditar.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("EDITAR: " + CargoViewConsultar.cargoAtual.getDsCargo());
+                
+                SistemaView.cargoEditar(CargoViewConsultar.cargoAtual);
+                return;
             }
         });
 
         jButtonExcluir.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("EXCLUIR: "+ CargoViewConsultar.cargoAtual.getDsCargo());
+                try {
+                    CargoDao.excluirCargo(CargoViewConsultar.cargoAtual.getIdCargo());
+                    atualizarLista(defaultListModelCargos);
+                    JOptionPane.showMessageDialog(null,"Apagado com sucesso!");
+
+                } catch (Exception ee) {
+                    JOptionPane.showMessageDialog(null,"Aconteceu um erro");
+                    System.out.println("FuncionarioViewConsultar > jButtonExcluir.addActionListener > Erro:\n" + ee.getMessage());
+                    //TODO: handle exception
+                }
             }
         });
 
@@ -112,6 +119,18 @@ public class CargoViewConsultar {
             
         });
 
+    }
+
+    
+    private static void atualizarLista(DefaultListModel<Cargo> defaultListModelCargos){
+        defaultListModelCargos.clear();
+        try {
+            for (Cargo cargoFor: CargoDao.buscarTodos()) {
+                defaultListModelCargos.addElement(cargoFor);
+            }
+        } catch (Exception e) {
+            System.out.println("-ERRO NA CONSULTA DOS CARGOS- \n"+ e.getMessage());
+        }
     }
 
 }

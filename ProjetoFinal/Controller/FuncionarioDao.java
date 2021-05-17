@@ -51,7 +51,7 @@ public class FuncionarioDao {
         System.out.println("QUERY >>> " + query);
 
         int resultadoSQL = Conn.insertQueryReturnInt(query,Conn.getStatement());
-        System.out.println("resultadoSQL: "+ resultadoSQL);
+        //System.out.println("resultadoSQL: "+ resultadoSQL);
         
         funcionario.setIdFuncionario(resultadoSQL);
         
@@ -82,7 +82,7 @@ public class FuncionarioDao {
     }
 
     public static boolean excluirFuncionario(int idFuncionario) throws SQLException{
-        System.out.println("delete NO BANCO DE DADOS (dsCargo)");
+        //System.out.println("delete NO BANCO DE DADOS (dsCargo)");
         String query = "delete from tbod_funcionario where id_funcionario = '"+idFuncionario+"' ";
 
         boolean resultadoSQL = Conn.deleteQuery(query, Conn.getStatement());

@@ -51,6 +51,14 @@ public class Conn {
         return saida;
     }
 
+    public static void fecharConexao(){
+        try {
+            Conn.conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     //create
     public static int insertQueryReturnInt(String SQLQy, Statement instrucaoSQL) {
         ResultSet generatedKeys = null;

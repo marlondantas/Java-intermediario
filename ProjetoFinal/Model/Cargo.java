@@ -10,7 +10,7 @@ public class Cargo {
     private String dsCargo;
 
     public Cargo(){
-        System.out.println("Novo cargo");
+        //System.out.println("Novo cargo");
     }
 
     public Cargo(int idCargo){
@@ -22,7 +22,7 @@ public class Cargo {
         this.setDsCargo(dados.getString("ds_carga"));
         this.setIdCargo(dados.getInt("id_cargo"));
 
-        System.out.println("dados carregado");
+        //System.out.println("dados carregado");
     }
 
     @Override

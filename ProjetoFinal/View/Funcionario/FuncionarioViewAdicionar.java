@@ -15,7 +15,7 @@ import java.util.Locale;
 import Model.Funcionario;
 import Controller.FuncionarioDao;
 
-public class FuncionarioView {
+public class FuncionarioViewAdicionar {
 
     public static JPanel getFuncionarioView(){
         JPanel jPanelFuncionarioView = new JPanel();

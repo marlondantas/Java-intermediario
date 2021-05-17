@@ -12,7 +12,8 @@ public class InicioView {
         JLabel lJLabelTitula = new JLabel("Escolha a opção no menu superior",JLabel.CENTER);
         
         criarComponetes(jPanelInicioView,lJLabelTitula);
-
+        criarEventos(jPanelInicioView, lJLabelTitula);
+        
         jPanelInicioView.setVisible(true);
         return jPanelInicioView;
     }

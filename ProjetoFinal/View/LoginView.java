@@ -2,27 +2,33 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginView{
       
+    public static boolean loginValido;
+
     public static JPanel getLoginView(){
         JPanel jPanelLoginView = new JPanel();
         jPanelLoginView.setLayout(null);
 
         JLabel jLabelTitulo =  new JLabel("Seja bem vindo ao sistema de company SA!", JLabel.CENTER);
         JLabel jLabelUsuario = new JLabel("Usuário", JLabel.LEFT);
-        JTextField jTextFieldUsuario = new JTextField();
+        JTextField jTextFieldUsuario = new JTextField("a");
         JLabel jLabelSenha = new JLabel("Senha", JLabel.LEFT);
-        JTextField jTextFieldSenha = new JTextField();
+        JPasswordField jTextFieldSenha = new JPasswordField("a");
         JButton jButtonEntrar = new JButton("Entrar");
 
         criarComponetes(jPanelLoginView,jLabelTitulo,jLabelUsuario,jTextFieldUsuario,jLabelSenha,jTextFieldSenha, jButtonEntrar);
         criarEventos(jPanelLoginView,jLabelTitulo,jLabelUsuario,jTextFieldUsuario,jLabelSenha,jTextFieldSenha, jButtonEntrar);
 
+        jPanelLoginView.setVisible(true);
+
         return jPanelLoginView;
     }
 
-    private static void criarComponetes(JPanel jPanelLoginView, JLabel jLabelTitulo,JLabel jLabelUsuario,JTextField jTextFieldUsuario,JLabel jLabelSenha, JTextField jTextFieldSenha, JButton jButtonEntrar){
+    private static void criarComponetes(JPanel jPanelLoginView, JLabel jLabelTitulo,JLabel jLabelUsuario,JTextField jTextFieldUsuario,JLabel jLabelSenha, JPasswordField jTextFieldSenha, JButton jButtonEntrar){
         jLabelTitulo.setFont(new Font(jLabelTitulo.getFont().getName(),Font.PLAIN, 18) );
 
         jLabelTitulo.setBounds(20,100,660,40);
@@ -42,8 +48,23 @@ public class LoginView{
         //jPanelLoginView.setVisible(true);
     }
 
-    private static void criarEventos(JPanel jPanelLoginView, JLabel jLabelTitulo,JLabel jLabelUsuario,JTextField jTextFieldUsuario,JLabel jLabelSenha, JTextField jTextFieldSenha, JButton jButtonEntrar){
-        
+    private static void criarEventos(JPanel jPanelLoginView, JLabel jLabelTitulo,JLabel jLabelUsuario,JTextField jTextFieldUsuario,JLabel jLabelSenha, JPasswordField jTextFieldSenha, JButton jButtonEntrar){
+        jButtonEntrar.addActionListener( new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if( jTextFieldUsuario.getText().equals("a") && jTextFieldSenha.getText().equals("a") ){
+                    LoginView.loginValido = true;
+                    SistemaView.jPanelSistema = InicioView.getInicioView();
+                    SistemaView.inicio(LoginView.loginValido);
+                    return;
+                }else{
+                    JOptionPane.showMessageDialog(null,"Senha errado mano");
+                    LoginView.loginValido = false;
+                }
+                
+            }
+        });
     }
 
 }
