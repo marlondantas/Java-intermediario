@@ -38,6 +38,7 @@ public class SistemaView {
         JMenu jMenuRelatorios = new JMenu("Relatórios");
 
         JMenuItem jMenuItemSair = new JMenuItem("Sair"); 
+        JMenuItem jMenuItemInicio = new JMenuItem("Inicio"); 
         JMenuItem jMenuItemFuncionarioConsultar = new JMenuItem("Consultar"); 
         JMenuItem jMenuItemFuncionarioCadastrar = new JMenuItem("Cadastrar"); 
         JMenuItem jMenuItemCangoConsultar = new JMenuItem("Consultar"); 
@@ -45,16 +46,17 @@ public class SistemaView {
         JMenuItem jMenuItemRelatorioCargo = new JMenuItem("Funcionários por cargos"); 
         JMenuItem jMenuItemRelatorioSalarios = new JMenuItem("Salários dos funcionário"); 
 
-        criarComponetes(jMenuBar, jMenuArquivo, jMenuFuncionario, jMenuCargos, jMenuRelatorios, jMenuItemSair, jMenuItemFuncionarioConsultar, jMenuItemFuncionarioCadastrar, jMenuItemCangoConsultar, jMenuItemCangoCadastrar, jMenuItemRelatorioCargo, jMenuItemRelatorioSalarios);
-        criarEventos(jMenuBar, jMenuArquivo, jMenuFuncionario, jMenuCargos, jMenuRelatorios, jMenuItemSair, jMenuItemFuncionarioConsultar, jMenuItemFuncionarioCadastrar, jMenuItemCangoConsultar, jMenuItemCangoCadastrar, jMenuItemRelatorioCargo, jMenuItemRelatorioSalarios);
+        criarComponetes(jMenuBar, jMenuArquivo, jMenuFuncionario, jMenuCargos, jMenuRelatorios, jMenuItemSair, jMenuItemFuncionarioConsultar, jMenuItemFuncionarioCadastrar, jMenuItemCangoConsultar, jMenuItemCangoCadastrar, jMenuItemRelatorioCargo, jMenuItemRelatorioSalarios,jMenuItemInicio);
+        criarEventos(jMenuBar, jMenuArquivo, jMenuFuncionario, jMenuCargos, jMenuRelatorios, jMenuItemSair, jMenuItemFuncionarioConsultar, jMenuItemFuncionarioCadastrar, jMenuItemCangoConsultar, jMenuItemCangoCadastrar, jMenuItemRelatorioCargo, jMenuItemRelatorioSalarios,jMenuItemInicio);
 
         return jMenuBar;
     }
 
     private static void criarComponetes(JMenuBar jMenuBar, JMenu jMenuArquivo, JMenu jMenuFuncionario, JMenu jMenuCargos, JMenu jMenuRelatorios,  JMenuItem jMenuItemSair,  JMenuItem jMenuItemFuncionarioConsultar, JMenuItem jMenuItemFuncionarioCadastrar, JMenuItem jMenuItemCangoConsultar,
-    JMenuItem jMenuItemCangoCadastrar, JMenuItem jMenuItemRelatorioCargo, JMenuItem jMenuItemRelatorioSalarios){
+    JMenuItem jMenuItemCangoCadastrar, JMenuItem jMenuItemRelatorioCargo, JMenuItem jMenuItemRelatorioSalarios, JMenuItem jMenuItemInicio){
 
         jMenuBar.add(jMenuArquivo);
+        jMenuArquivo.add(jMenuItemInicio);
         jMenuArquivo.add(jMenuItemSair);
 
         jMenuBar.add(jMenuFuncionario);
@@ -72,12 +74,20 @@ public class SistemaView {
     }
 
     private static void criarEventos(JMenuBar jMenuBar, JMenu jMenuArquivo, JMenu jMenuFuncionario, JMenu jMenuCargos, JMenu jMenuRelatorios,  JMenuItem jMenuItemSair,  JMenuItem jMenuItemFuncionarioConsultar, JMenuItem jMenuItemFuncionarioCadastrar, JMenuItem jMenuItemCangoConsultar,
-        JMenuItem jMenuItemCangoCadastrar, JMenuItem jMenuItemRelatorioCargo, JMenuItem jMenuItemRelatorioSalarios){
+        JMenuItem jMenuItemCangoCadastrar, JMenuItem jMenuItemRelatorioCargo, JMenuItem jMenuItemRelatorioSalarios, JMenuItem jMenuItemInicio){
             jMenuItemSair.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     
                     System.exit(0);
+                }
+            });
+
+            jMenuItemInicio.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    
+                    SistemaView.inicio(true);
                 }
             });
 
@@ -135,7 +145,7 @@ public class SistemaView {
 
     public static void inicio(boolean loginValido){
 
-        if(loginValido){
+        if(SistemaView.jFrameSistema.getMenuBar() == null){
             
             SistemaView.jFrameSistema.getContentPane().removeAll();
             
@@ -147,7 +157,11 @@ public class SistemaView {
             SistemaView.jFrameSistema.setVisible(true);
             
         }else{
-            JOptionPane.showMessageDialog(null,"Não foi logado amigo");
+            SistemaView.jFrameSistema.getContentPane().removeAll();
+            SistemaView.jFrameSistema.add(InicioView.getInicioView());
+            
+            SistemaView.jFrameSistema.setTitle("Funcionarios Company SA");
+            SistemaView.jFrameSistema.setVisible(true);
         }
     }
 

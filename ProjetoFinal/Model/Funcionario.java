@@ -11,7 +11,7 @@ public class Funcionario {
     private int idFuncionario;
     private String nomaFuncionario;
     private String sobrenomeFuncionario;
-    private Date  dataNascimento;
+    private Date  dataNascimento = new Date(0);
     private String dsEmail;
     private Double vlSalario;
 
@@ -34,7 +34,7 @@ public class Funcionario {
 
 
     public Funcionario(){
-        System.out.println("Novo funcionario");
+        //System.out.println("Novo funcionario");
     }
 
     public Funcionario(ResultSet dados) throws SQLException{
@@ -42,6 +42,7 @@ public class Funcionario {
         this.setIdFuncionario(dados.getInt("id_funcionario"));
         this.setNomaFuncionario(dados.getString("nm_funcionario"));
         this.setSobrenomeFuncionario(dados.getString("nm_sobrenome"));
+        this.setDsEmail(dados.getString("ds_email"));
         this.setDataNascimento(dados.getDate("dt_nascimento"));
         this.setVlSalario(dados.getDouble("vl_salario"));
 

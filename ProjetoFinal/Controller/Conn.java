@@ -97,6 +97,7 @@ public class Conn {
             instrucaoSQL.execute(SQLQy);
             saida = true;
         } catch (Exception e) {
+            System.out.println("ERRO: "+ e.getMessage());
             //TODO: handle exception
         }
 

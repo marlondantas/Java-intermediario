@@ -59,18 +59,25 @@ public class FuncionarioDao {
     }
 
     public static Funcionario editarFuncionario(Funcionario funcionario) throws SQLException{
-        System.out.println("update NO BANCO DE DADOS (dsCargo)");
+        //System.out.println("update NO BANCO DE DADOS (dsCargo)");
         
-        String query = "update tbod_funcionario set nm_funcionario = ':nm_funcionario', nm_sobrenome = ':nm_sobrenome', dt_nascimento= ':dt_nascimento', ds_email= ':ds_email', id_cargo = ':id_cargo', vl_salario = ':vl_salario' where id_funcionario = :id_funcionario";
+        String query = "update tbod_funcionario set nm_funcionario = ':nm_funcionario', nm_sobrenome = ':nm_sobrenome', dt_nascimento= ':dt_nascimento', ds_email= ':ds_email', id_cargo = ':id_cargo', vl_salario = ':vl_salario' where id_funcionario = ':id_funcionario'";
         
-        query.replace(":nm_funcionario", funcionario.getNomaFuncionario());
-        query.replace(":nm_sobrenome", funcionario.getSobrenomeFuncionario());
-        query.replace(":dt_nascimento", funcionario.getDataNascimento().toString());
-        query.replace(":ds_email", funcionario.getDsEmail());
-        query.replace(":id_cargo", funcionario.getCargo().getIdCargo()+"");
-        query.replace(":vl_salario",  funcionario.getVlSalario()+"");
-        query.replace(":id_funcionario",  funcionario.getIdFuncionario()+"");
+        query =  query.replace(":nm_funcionario", funcionario.getNomaFuncionario());
+        query =  query.replace(":nm_sobrenome", funcionario.getSobrenomeFuncionario());
+        query =  query.replace(":dt_nascimento", funcionario.getDataNascimento().toString());
+        query =  query.replace(":ds_email", funcionario.getDsEmail());
 
+        System.out.println("CARGO: " + funcionario.getCargo().getIdCargo()+"");
+
+        query =  query.replace(":id_cargo", funcionario.getCargo().getIdCargo()+"");
+        query =  query.replace(":vl_salario",  funcionario.getVlSalario()+"");
+
+        System.out.println("id_funcionario: " +  funcionario.getIdFuncionario()+"");
+
+        query =  query.replace(":id_funcionario",  funcionario.getIdFuncionario()+"");
+
+        System.out.println("QUERY > "+ query);
         boolean resultadoSQL = Conn.updateQuery(query, Conn.getStatement());
         Funcionario funcionarioSaida = null;
 
