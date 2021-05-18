@@ -210,7 +210,22 @@ public class SistemaView {
     }
 
 
-    private static void relatorioCargo(){}
-    private static void relatorioSalarios(){}
+    private static void relatorioCargo(){
+        SistemaView.jFrameSistema.getContentPane().removeAll();
+
+        SistemaView.jFrameSistema.add(RelatorioView.getRelatorioCargo());
+
+        SistemaView.jFrameSistema.setTitle("Relatorio CARGOS Company SA");   
+        SistemaView.jFrameSistema.setVisible(true);
+    }
+    
+    private static void relatorioSalarios(){
+        SistemaView.jFrameSistema.getContentPane().removeAll();
+
+        SistemaView.jFrameSistema.add(RelatorioView.getRelatorioFuncionario());
+
+        SistemaView.jFrameSistema.setTitle("Relatorio Funcionario Company SA");   
+        SistemaView.jFrameSistema.setVisible(true);
+    }
 
 }
